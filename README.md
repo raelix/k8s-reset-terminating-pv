@@ -47,7 +47,7 @@ kubectl port-forward pods/etcd-member-master0 2379:2379 -n etcd
 Example:
 
 ```shell
-./resetpv --k8s-key-prefix kubernetes.io pv-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
+./resetpv --k8s-key-prefix kubernetes.io persistentvolumes/pv-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
 ```
 
 ## License
@@ -59,3 +59,8 @@ To check for example the persistentvolumeclaim (which are namespace based compar
 ```shell
 etcdctl get /registry/persistentvolumeclaim --prefix --keys-only 
 ```
+
+## Limitation
+As of today it just handle PV and not PVC - a simple modification could allow to run it on PVC as well BUT, could be interesting to extend it to multiple use cases e.g.:
+- restore PVC terminating status to Bound
+- replace Pod content (useful when you just want to do a quick change without changing the parent)
