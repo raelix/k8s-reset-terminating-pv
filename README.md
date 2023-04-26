@@ -53,3 +53,9 @@ Example:
 ## License
 
 k8s-reset-terminating-pv is released under the MIT license.
+
+## Check groups
+To check for example the persistentvolumeclaim (which are namespace based compare to the pv) use:
+```shell
+etcdctl get /registry/persistentvolumeclaim --prefix --keys-only 
+```
