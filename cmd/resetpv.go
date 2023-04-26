@@ -110,7 +110,7 @@ func recoverPV(ctx context.Context, client *clientv3.Client) error {
 	protoSerializer := protobuf.NewSerializer(runtimeScheme, runtimeScheme)
 
 	// Get PV value from etcd which in protobuf format
-	key := fmt.Sprintf("/%s/persistentvolumes/%s", k8sKeyPrefix, pvName)
+	key := fmt.Sprintf("/%s/%s", k8sKeyPrefix, pvName)
 	resp, err := client.Get(ctx, key)
 	if err != nil {
 		return err
